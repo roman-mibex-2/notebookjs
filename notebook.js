@@ -138,7 +138,10 @@
 
     nb.display.latex = function (latex) {
         var el = makeElement("div", [ "latex-output" ]);
-        el.innerText = joinText(latex).replace(/\n/g,"");
+        el.innerText =  joinText(latex).replace(/\n/g,"");
+        if (root.renderMathInElement != null) {
+            root.renderMathInElement(el, { delimiters: math_delimiters });
+        }
         return el;
     };
     nb.display["text/latex"] = nb.display.latex;
